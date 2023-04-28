@@ -61,6 +61,7 @@ public class BallScript : MonoBehaviour
     /// <param name="other"></param>
     void OnCollisionEnter2D(Collision2D other)
     {
+        audioSource.Play();
         if (other.transform.CompareTag("Brick"))
         {
             BrickScript brickScript = other.gameObject.GetComponent<BrickScript>();
@@ -84,8 +85,6 @@ public class BallScript : MonoBehaviour
 
                 Destroy(other.gameObject);
             }
-            audioSource.Play();
-
         }
     }
 }
