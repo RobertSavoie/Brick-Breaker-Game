@@ -61,9 +61,9 @@ public class BallScript : MonoBehaviour
     /// <param name="other"></param>
     void OnCollisionEnter2D(Collision2D other)
     {
-        audioSource.Play();
         if (other.transform.CompareTag("Brick"))
         {
+            audioSource.Play();
             BrickScript brickScript = other.gameObject.GetComponent<BrickScript>();
             if (brickScript.hitsToBreak > 1)
             {
@@ -72,7 +72,7 @@ public class BallScript : MonoBehaviour
             else
             {
                 int rand = Random.Range(1, 101);
-                if(rand < 10)
+                if(rand < 20)
                 {
                     Instantiate(powerUp, other.transform.position, other.transform.rotation);
                 }
@@ -85,6 +85,10 @@ public class BallScript : MonoBehaviour
 
                 Destroy(other.gameObject);
             }
+        }
+        if (other.transform.CompareTag("Paddle"))
+        {
+            audioSource.Play();
         }
     }
 }

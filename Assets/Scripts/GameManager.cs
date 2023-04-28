@@ -12,10 +12,13 @@ public class GameManager : MonoBehaviour
     public int numberOfBricks;
     public int currentLevelIndex = 0;
     public bool gameOver;
+
     public Text livesText;
     public Text scoreText;
     public GameObject gameOverPanel;
     public GameObject loadLevelPanel;
+    public Text highScoreText;
+    public InputField highScoreInput;
     public Transform[] levels;
 
     // Start is called before the first frame update
@@ -84,6 +87,26 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverPanel.SetActive(true);
+        int highScore = PlayerPrefs.GetInt("HIGHSCORE");
+        if(score > highScore)
+        {
+            PlayerPrefs.SetInt("HIGHSCORE", score);
+
+            highScoreText.text = "New High Score!" + "\n" + "Enter Your Name Below.";
+            highScoreInput.gameObject.SetActive(true);
+        }
+        else
+        {
+            highScoreText.text = PlayerPrefs.GetString("HIGHSCORENAME") + "'s High Score was " + highScore + "\nCan you beat it?";
+        }
+    }
+
+    public void NewHighScore()
+    {
+        string highScoreName = highScoreInput.text;
+        PlayerPrefs.SetString("HIGHSCORENAME", highScoreName);
+        highScoreInput.gameObject.SetActive(false);
+        highScoreText.text = "Congratulations " + highScoreName + "\n" + "Your New High Score Is: " + score;
     }
 
     public void PlayAgain()
@@ -93,7 +116,6 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
-        Debug.Log("Game Quit");
+        SceneManager.LoadScene("Start Menu");
     }
 }
