@@ -828,10 +828,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ef9e0cfd74d8347bc9db5242ac351a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inPlay: 0
   speed: 400
+  inPlay: 0
   paddle: {fileID: 1118455015}
-  powerUp: {fileID: 1404487340487156092, guid: ff326fa09ed0fc04db8e743e256b8a60, type: 3}
+  powerUp:
+  - {fileID: 1404487340487156092, guid: ff326fa09ed0fc04db8e743e256b8a60, type: 3}
+  - {fileID: 3879620480512369740, guid: fe31650378f2b7e4f81703dd7be7db13, type: 3}
+  - {fileID: 2700674650404108013, guid: 6126b76e5ff13254e8a94cd40a97f5cc, type: 3}
+  - {fileID: 8395706781411136714, guid: c0f30476481ee444f9852957ce228b55, type: 3}
+  - {fileID: 708558125797174783, guid: 19b5f6f9444e3d84fbb8d4aaf9274ae2, type: 3}
+  - {fileID: 594816722530243231, guid: bb4202ce35d3f284f9911bdb29120758, type: 3}
+  - {fileID: 5881748450916139064, guid: 6ceb14a6d4343ac47912b773d14fbf80, type: 3}
   rb: {fileID: 710878891}
   gm: {fileID: 684267458}
 --- !u!58 &710878890
@@ -1559,6 +1566,7 @@ MonoBehaviour:
   speed: 10
   rightScreenEdge: 5.6
   leftScreenEdge: -5.6
+  ball: {fileID: 710878889}
   gm: {fileID: 684267458}
 --- !u!212 &1238967212
 SpriteRenderer:

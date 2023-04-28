@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    public bool inPlay;
     public float speed;
+    public bool inPlay;
     public Transform paddle;
-    public Transform powerUp;
+    public Transform[] powerUp;
     public Rigidbody2D rb;
     public GameManager gm;
     AudioSource audioSource;
@@ -72,9 +73,10 @@ public class BallScript : MonoBehaviour
             else
             {
                 int rand = Random.Range(1, 101);
-                if(rand < 20)
+                int randI = Random.Range(0, 7);
+                if(rand < 100)
                 {
-                    Instantiate(powerUp, other.transform.position, other.transform.rotation);
+                    Instantiate(powerUp[randI], other.transform.position, other.transform.rotation);
                 }
 
                 Transform newExplosion = Instantiate(brickScript.explosion, other.transform.position, other.transform.rotation);
@@ -90,5 +92,33 @@ public class BallScript : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+    public void IncreaseSpeed(float speedAdjustment, Collider2D other)
+    {
+        if (speed < 600)
+        {
+            speed *= speedAdjustment;
+            rb.velocity *= speedAdjustment;
+            if (speed > 600)
+            {
+                speed = 600;
+            }
+        }
+        Destroy(other.gameObject);
+    }
+
+    public void DecreaseSpeed(float speedAdjustment, Collider2D other)
+    {
+        if (speed > 300)
+        {
+            speed /= speedAdjustment;
+            rb.velocity /= speedAdjustment;
+            if (speed < 300)
+            {
+                speed = 300;
+            }
+        }
+        Destroy(other.gameObject);
     }
 }

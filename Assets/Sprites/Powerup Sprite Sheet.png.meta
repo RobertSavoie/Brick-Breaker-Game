@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Powerup Sprite Sheet_1
+      name: Decrease Paddle Width
       rect:
         serializedVersion: 2
         x: 128
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Powerup Sprite Sheet_2
+      name: Increase Paddle Width
       rect:
         serializedVersion: 2
         x: 253
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lose Life
+      name: Decrease Paddle Speed
       rect:
         serializedVersion: 2
         x: 128
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Powerup Sprite Sheet_6
+      name: Increase Paddle Speed
       rect:
         serializedVersion: 2
         x: 253
@@ -327,7 +327,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Powerup Sprite Sheet_10
+      name: Increase Ball Speed
       rect:
         serializedVersion: 2
         x: 253
@@ -390,7 +390,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Powerup Sprite Sheet_13
+      name: Decrease Ball Speed
       rect:
         serializedVersion: 2
         x: 127
@@ -547,23 +547,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Decrease Ball Speed: 1121888008
+      Decrease Paddle Speed: -504626964
+      Decrease Paddle Width: 902927915
       Extra Life: 897428257
-      Lose Life: -504626964
+      Increase Ball Speed: -182711083
+      Increase Paddle Speed: 465762966
+      Increase Paddle Width: -503267906
       Powerup Sprite Sheet_0: 1553602208
-      Powerup Sprite Sheet_1: 902927915
-      Powerup Sprite Sheet_10: -182711083
       Powerup Sprite Sheet_11: 1768652270
       Powerup Sprite Sheet_12: 1776840697
-      Powerup Sprite Sheet_13: 1121888008
       Powerup Sprite Sheet_14: -743396130
       Powerup Sprite Sheet_15: 916785273
       Powerup Sprite Sheet_16: -606922192
       Powerup Sprite Sheet_17: -59200764
       Powerup Sprite Sheet_18: -348796242
       Powerup Sprite Sheet_19: -590774692
-      Powerup Sprite Sheet_2: -503267906
       Powerup Sprite Sheet_3: 2009622945
-      Powerup Sprite Sheet_6: 465762966
       Powerup Sprite Sheet_7: 202336908
       Powerup Sprite Sheet_8: 1130898851
       Powerup Sprite Sheet_9: 1121461713
