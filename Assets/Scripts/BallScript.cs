@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public bool inPlay;
-    public Transform paddle;
     public float speed;
-    public Transform explosion;
+    public Transform paddle;
+    public Transform powerUp;
+    public Rigidbody2D rb;
     public GameManager gm;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,8 @@ public class BallScript : MonoBehaviour
     {
         if (gm.gameOver)
         {
-            return;
+            rb.velocity = Vector2.zero;
+            inPlay = false;
         }
 
         if (!inPlay)
@@ -53,20 +56,36 @@ public class BallScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when brick is hit by ball
+    /// Called when the ball hits a brick
     /// </summary>
     /// <param name="other"></param>
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("Brick"))
         {
-            Transform newExplosion = Instantiate(explosion, other.transform.position, other.transform.rotation);
-            Destroy(newExplosion.gameObject, 2.5f);
+            BrickScript brickScript = other.gameObject.GetComponent<BrickScript>();
+            if (brickScript.hitsToBreak > 1)
+            {
+                brickScript.BreakBrick();
+            }
+            else
+            {
+                int rand = Random.Range(1, 101);
+                if(rand < 10)
+                {
+                    Instantiate(powerUp, other.transform.position, other.transform.rotation);
+                }
 
-            gm.UpdateScore(other.gameObject.GetComponent<BrickScript>().points);
-            gm.UpdateNumberOfBricks();
+                Transform newExplosion = Instantiate(brickScript.explosion, other.transform.position, other.transform.rotation);
+                Destroy(newExplosion.gameObject, 2.5f);
 
-            Destroy(other.gameObject);
+                gm.UpdateScore(brickScript.points);
+                gm.UpdateNumberOfBricks();
+
+                Destroy(other.gameObject);
+            }
+            audioSource.Play();
+
         }
     }
 }
