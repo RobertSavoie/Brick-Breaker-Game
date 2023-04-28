@@ -74,7 +74,7 @@ public class BallScript : MonoBehaviour
             {
                 int rand = Random.Range(1, 101);
                 int randI = Random.Range(0, 7);
-                if(rand < 100)
+                if(rand < 25)
                 {
                     Instantiate(powerUp[randI], other.transform.position, other.transform.rotation);
                 }
